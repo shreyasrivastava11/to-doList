@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import './App.css'
 import { Todoprovider } from './context/todoContext';
 
@@ -6,7 +6,7 @@ function App() {
   const [todos, settodos] = useState([]);
 
   const addTodo = (todomsg) => {
-    settodos((prev) => [{id: Date.now(),...todomsg},...prev])
+    settodos((prev) => [{id: Date.now(), ...todomsg},...prev])
   }
 
   const updateTodo = (id, todomsg) => {
@@ -22,6 +22,18 @@ function App() {
     }: prevTodo)))
   }
   
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+
+    if(todos && todos.length > 0){
+      settodos(todos);
+    }
+  },[])
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  },[todos])
+
   return (
     <Todoprovider value={{todos, deleteTodo, updateTodo, addTodo, toggleComplete}}>
       <div className="bg-[#172842] min-h-screen py-8">
