@@ -5,11 +5,17 @@ This project is a simple Todo application built with React. It utilizes context 
 # Features
 
 ~ Add Todo
+
 ~ Update Todo
+
 ~ Delete Todo
+
 ~ Toggle On Complete
+
 ~ Context API
+
 ~ Local Storage
+
 ~ Tailwind CSS
 
 # Demo 
